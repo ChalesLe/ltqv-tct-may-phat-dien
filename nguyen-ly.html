@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nguyên lý</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">⚡ Máy phát điện</div>
+    <div class="menu">
+        <a href="index.html">Trang chủ</a>
+        <a href="cau-tao.html">Cấu tạo</a>
+        <a href="nguyen-ly.html">Nguyên lý</a>
+        <a href="ung-dung-co-ban.html">Ứng dụng</a>
+        <a href="ung-dung-nang-cao.html">Khác</a>
+    </div>
+</nav>
+
+<header>
+<h1>⚡ Nguyên lý hoạt động</h1>
+</header>
+
+<main class="container">
+
+<div class="card fade">
+<p>
+<b>-</b> Máy phát điện xoay chiều hoạt động dựa trên hiện tượng cảm ứng điện từ, chuyển hóa cơ năng thành hóa năng.
+</p>
+<p>
+<b>-</b> Khi cho cuộn dây dẫn quay đều trong từ trường (hoặc cho nam châm quay trước cuộn dây), thì từ thông qua cuộn dây biến thiên tuần hoàn theo thời gian. Theo định luật cảm ứng điện từ, trong cuộn dây xuất hiện dòng điện cảm ứng.
+</p>
+<p>
+<b>-</b> Vì sự biến thiên của từ thông là tuần hoàn nên suất điện động sinh ra cũng biến thiên tuần hoàn theo thời gian, tạo thành dòng điện xoay chiều.
+</p>
+</div>
+
+<div class="card fade">
+<h2>Định luật Faraday</h2>
+<p><b>E = -N.(dΦ/dt)</b></p>
+<p>
+Suất điện động cảm ứng xuất hiện khi từ thông qua cuộn dây biến thiên theo thời gian.
+</p>
+</div>
+
+<div class="card fade">
+<h2>Mô phỏng nguyên lý hoạt động</h2>
+<div class="simulation">
+    <div class="generator">
+        <div class="magnet"></div>
+        <div class="coil"></div>
+    </div>
+</div>
+<p>
+Khi nam châm quay, từ trường xuyên qua cuộn dây thay đổi liên tục theo thời gian.
+Sự biến thiên này tạo ra suất điện động cảm ứng → sinh ra dòng điện xoay chiều.
+</p>
+<p style="text-align:center; margin-top:15px;">
+👉 Tốc độ quay càng nhanh → suất điện động càng lớn → dòng điện mạnh hơn
+</p>
+</div>
+
+<div class="card fade">
+<h2>Đồ thị suất điện động</h2>
+<canvas id="sinChart" width="600" height="200"></canvas>
+<p>
+Đồ thị hình sin biểu diễn sự biến thiên của suất điện động theo thời gian.
+Khi nam châm quay đều → dòng điện tạo ra có dạng hình sin.
+</p>
+</div>
+
+<div class="card fade">
+<h2>🧠 Bản chất vật lý</h2>
+<p>
+Khi nam châm quay, góc giữa từ trường và cuộn dây thay đổi liên tục.
+→ Từ thông biến thiên theo quy luật:
+</p>
+<p><b>Φ = Φ₀ cos(ωt)</b></p>
+<p>
+Do đó, suất điện động cảm ứng:
+</p>
+<p><b>E = E₀ sin(ωt)</b></p>
+<p>
+→ Dòng điện tạo ra là dòng xoay chiều hình sin.
+</p>
+</div>
+</main>
+
+<script src="script.js"></script>
+<script>
+const canvas = document.getElementById("sinChart");
+const ctx = canvas.getContext("2d");
+let angle = 0;
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    for (let x = 0; x < canvas.width; x++) {
+        let y = 100 + 50 * Math.sin((x * 0.02) + angle);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = "#0a1a5c";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    angle += 0.05;
+    requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>

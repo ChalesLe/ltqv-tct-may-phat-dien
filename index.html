@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⚡ Máy phát điện - Cảm ứng điện từ</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">⚡ Máy phát điện</div>
+    <div class="menu">
+        <a href="index.html" class="active">Trang chủ</a>
+        <a href="cau-tao.html">Cấu tạo</a>
+        <a href="nguyen-ly.html">Nguyên lý</a>
+        <a href="ung-dung-co-ban.html">Ứng dụng</a>
+        <a href="ung-dung-nang-cao.html">Khác</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Cảm ứng điện từ</h1>
+        <p class="hero-subtitle">Khám phá nguyên lý tạo ra điện năng từ chuyển động từ trường</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">1831</span>
+                <span class="stat-label">Phát minh</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">⚡ Faraday</span>
+                <span class="stat-label">Nhà khoa học</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="generator hero-generator">
+            <div class="coil"></div>
+            <div class="magnet"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="container">
+    <div class="intro fade">
+        <h2>Nguyên lý hoạt động</h2>
+        <p>Máy phát điện chuyển đổi năng lượng cơ học thành điện năng thông qua <strong>định luật Faraday</strong>.</p>
+    </div>
+
+    <div class="grid">
+        <a href="cau-tao.html" class="card fade">
+            <div class="icon">🔧</div>
+            <h3>Cấu tạo</h3>
+        </a>
+
+        <a href="nguyen-ly.html" class="card fade">
+            <div class="icon">⚡</div>
+            <h3>Nguyên lý</h3>
+        </a>
+
+        <a href="ung-dung-co-ban.html" class="card fade">
+            <div class="icon">🏭</div>
+            <h3>Ứng dụng cơ bản</h3>
+        </a>
+
+        <a href="ung-dung-nang-cao.html" class="card fade">
+            <div class="icon">🚀</div>
+            <h3>Ứng dụng khác</h3>
+        </a>
+    </div>
+
+    <div class="demo-section fade">
+        <h2>Demo trực quan</h2>
+        <div class="simulation">
+            <canvas id="sinChart" width="800" height="200"></canvas>
+        </div>
+        <p class="demo-caption">Đồ thị sóng sin - điện áp thay đổi theo từ thông</p>
+    </div>
+</main>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Chart demo
+    const ctx = document.getElementById('sinChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: 100}, (_, i) => i),
+            datasets: [{
+                data: Array.from({length: 100}, (_, i) => Math.sin(i * 0.1) * 50 + 50),
+                borderColor: '#4facfe',
+                backgroundColor: 'rgba(79, 172, 254, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { display: false },
+                y: { display: false }
+            },
+            elements: { point: { radius: 0 } }
+        }
+    });
+</script>
+</body>
+</html>
